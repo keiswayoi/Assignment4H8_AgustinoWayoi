@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profil Edit</title>
+  <style>
+    /* Gaya untuk Layout Profil */
+    #profile {
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+    }
+
+    .profile-picture {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin-right: 20px;
+    }
+
+    .profile-details {
+      flex: 1;
+    }
+
+    .profile-details h2 {
+      font-size: 24px;
+      margin: 5px 0;
+    }
+
+    .profile-details p {
+      margin: 3px 0;
+      font-size: 16px;
+    }
+
+    .profile-buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .profile-buttons button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #editButton {
+      background-color: #007bff;
+      color: white;
+    }
+
+    #editButton:hover {
+      background-color: #0056b3;
+    }
+
+    #resumeButton {
+      background-color: #28a745;
+      color: white;
+    }
+
+    #resumeButton:hover {
+      background-color: #218838;
+    }
+
+    /* Gaya untuk Formulir Edit */
+    #editForm {
+      max-width: 400px;
+      margin: auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      display: none;
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+    }
+
+    #editForm input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+
+    #editForm button {
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    #editForm button:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Bagian Profil -->
+<div id="profile">
+  <img src="Megumi Fushiguro.jpeg" alt="Foto Profil" class="profile-picture">
+  <div class="profile-details">
+    <h2 id="name">Megumito</h2>
+    <p id="position">Front End Designer</p>
+    <p><strong>Availability:</strong> <span id="availability">Full Time</span></p>
+    <p><strong>Usia:</strong> <span id="age">19</span></p>
+    <p><strong>Lokasi:</strong> <span id="location">Jakarta</span></p>
+    <p><strong>Pengalaman:</strong> <span id="experience">2 Tahun</span></p>
+    <p><strong>Email:</strong> <span id="email">email@gmail.com</span></p>
+    <div class="profile-buttons">
+      <button id="editButton" onclick="openForm()">Edit</button>
+      <button id="resumeButton">Resume</button>
+    </div>
+  </div>
+</div>
+
+<!-- Bagian Formulir Edit -->
+<div id="editForm">
+  <h2>Edit Profil</h2>
+  <input type="text" id="editName" placeholder="Nama Anda">
+  <input type="text" id="editPosition" placeholder="Posisi (e.g., Front End Designer)">
+  <input type="text" id="editAvailability" placeholder="Availability (e.g., Full Time)">
+  <input type="number" id="editAge" placeholder="Usia">
+  <input type="text" id="editLocation" placeholder="Lokasi">
+  <input type="number" id="editExperience" placeholder="Pengalaman (dalam tahun)">
+  <input type="email" id="editEmail" placeholder="Email">
+  <button onclick="submitForm()">Submit</button>
+</div>
+
+<script>
+  // Fungsi untuk membuka formulir edit
+  function openForm() {
+    document.getElementById("editForm").style.display = "block";
+    document.getElementById("profile").style.display = "none";
+    
+    // Isi nilai default di formulir dari profil saat ini
+    document.getElementById("editName").value = document.getElementById("name").innerText;
+    document.getElementById("editPosition").value = document.getElementById("position").innerText;
+    document.getElementById("editAvailability").value = document.getElementById("availability").innerText;
+    document.getElementById("editAge").value = document.getElementById("age").innerText;
+    document.getElementById("editLocation").value = document.getElementById("location").innerText;
+    document.getElementById("editExperience").value = document.getElementById("experience").innerText.split(" ")[0];
+    document.getElementById("editEmail").value = document.getElementById("email").innerText;
+  }
+
+  // Fungsi untuk mengirim data dan memperbarui profil
+  function submitForm() {
+    document.getElementById("name").innerText = document.getElementById("editName").value;
+    document.getElementById("position").innerText = document.getElementById("editPosition").value;
+    document.getElementById("availability").innerText = document.getElementById("editAvailability").value;
+    document.getElementById("age").innerText = document.getElementById("editAge").value;
+    document.getElementById("location").innerText = document.getElementById("editLocation").value;
+    document.getElementById("experience").innerText = document.getElementById("editExperience").value + " Tahun";
+    document.getElementById("email").innerText = document.getElementById("editEmail").value;
+    
+    // Kembali ke tampilan profil
+    document.getElementById("editForm").style.display = "none";
+    document.getElementById("profile").style.display = "block";
+  }
+</script>
+
+</body>
+</html>
